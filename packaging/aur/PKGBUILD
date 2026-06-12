@@ -1,0 +1,24 @@
+# Maintainer: GhostWriter CLI contributors
+pkgname=ghostwriter-cli
+pkgver=1.0.0
+pkgrel=1
+pkgdesc="Local-first, privacy-preserving AI writing assistant powered by Ollama"
+arch=('any')
+url="https://github.com/knarayanareddy/GHOSTWRITER-CLI"
+license=('MIT')
+depends=('python' 'python-click' 'python-httpx' 'python-keyring' 'python-cryptography')
+optdepends=('ollama: local LLM runtime')
+makedepends=('python-build' 'python-installer' 'python-wheel')
+source=("https://files.pythonhosted.org/packages/source/g/${pkgname}/${pkgname}-${pkgver}.tar.gz")
+sha256sums=('REPLACE_WITH_RELEASE_SDIST_SHA256')
+
+build() {
+  cd "$pkgname-$pkgver"
+  python -m build --wheel --no-isolation
+}
+
+package() {
+  cd "$pkgname-$pkgver"
+  python -m installer --destdir="$pkgdir" dist/*.whl
+  install -Dm644 LICENSE "$pkgdir/usr/share/licenses/$pkgname/LICENSE"
+}

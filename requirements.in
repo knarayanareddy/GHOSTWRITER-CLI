@@ -1,0 +1,8 @@
+click==8.4.1
+httpx==0.28.1
+keyring==25.7.0
+cryptography==48.0.1
+grapheme==0.6.0
+textual==8.2.7
+ollama==0.6.2
+tomli==2.4.1 ; python_version < "3.11"

@@ -1,12 +1,3 @@
-
-
----
-
-Here is the complete replacement design document. Copy this verbatim into your repo.
-
----
-
-```markdown
 # GHOSTWRITER CLI
 ## Engineering Design Specification — Single Source of Truth
 
@@ -1272,26 +1263,3 @@ ghostwriter-cli/
 *End of GhostWriter CLI Engineering Design Specification v2.0.0*
 *For questions or amendments, open a PR against this file.*
 *Changes to normative sections (§§ 5, 7, 12) require ADR + owner approval.*
-```
-
----
-
-## What changed and why (summary for your reference)
-
-Here's a quick mapping of every structural upgrade made over v1.0:
-
-| What was added | Why it matters |
-|---|---|
-| **Document Control block + Canonical Rule** | Prevents "doc vs code disagreement" drift; establishes SSOT governance |
-| **RFC 2119 normative language (MUST/SHOULD/MAY)** | Makes requirements testable and reviewable — removes ambiguity |
-| **§5 CLI Contract** (command grammar, exit codes, stdout/stderr) | Turns the CLI surface into a stable, versioned interface contract |
-| **§6 Data Lifecycle** (classification table, temp dir rules, permissions) | Makes data handling explicit and auditable |
-| **§7 Threat Model table** | Turns security from prose into a reviewable checklist |
-| **§8 Publisher contracts** (retry, idempotency, thread split, grapheme) | Defines what "correct" publisher behavior is — previously only sketched |
-| **§12 CI/CD gate spec** (4 gates, supply chain, rollback plan) | Makes "production release" a governed, repeatable process |
-| **§13 Packaging + system requirements** | Turns distribution from a roadmap item into a spec |
-| **§15 Failure modes table** | Documents user-visible behavior for every known failure — prevents silent failures |
-| **§16 Operational Readiness** (SECURITY.md, SemVer policy, doctor command, crash diagnostics) | The PRR layer — what you need to actually operate this in the wild |
-| **§19 ADR Index + template** | Preserves decision history; enables future changes to be made with confidence |
-| **Appendix A Dependency Register** | Supply chain transparency; one place to review all third-party risk |
-| **Appendix B Directory Layout** | Removes ambiguity about where things live |

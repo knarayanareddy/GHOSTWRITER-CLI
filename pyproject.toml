@@ -1,0 +1,90 @@
+[build-system]
+requires = ["setuptools==82.0.1"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "ghostwriter-cli"
+version = "1.0.1"
+description = "Local-first, privacy-preserving AI writing assistant powered by Ollama."
+readme = "README.md"
+requires-python = ">=3.10"
+license = "MIT"
+authors = [{ name = "GhostWriter Maintainers" }]
+keywords = ["writing", "ollama", "cli", "privacy", "mastodon", "bluesky", "ghost", "substack"]
+classifiers = [
+  "Development Status :: 4 - Beta",
+  "Environment :: Console",
+  "Intended Audience :: End Users/Desktop",
+  "License :: OSI Approved :: MIT License",
+  "Programming Language :: Python :: 3",
+  "Programming Language :: Python :: 3.10",
+  "Programming Language :: Python :: 3.11",
+  "Programming Language :: Python :: 3.12",
+  "Programming Language :: Python :: 3.13",
+  "Topic :: Text Processing :: Linguistic",
+]
+dependencies = [
+  "click==8.4.1",
+  "httpx==0.28.1",
+  "keyring==25.7.0",
+  "cryptography==48.0.1",
+  "grapheme==0.6.0",
+  "textual==8.2.7",
+  "ollama==0.6.2",
+  "tomli==2.4.1; python_version < '3.11'",
+]
+
+[project.optional-dependencies]
+dev = [
+  "pytest==9.0.3",
+  "pytest-cov==7.1.0",
+  "ruff==0.15.17",
+  "mypy==2.1.0",
+  "bandit==1.9.4",
+  "pip-audit==2.10.1",
+  "cyclonedx-bom==7.3.0",
+]
+
+[project.scripts]
+ghostwriter = "gw.cli:main"
+
+[project.urls]
+Homepage = "https://github.com/knarayanareddy/GHOSTWRITER-CLI"
+Specification = "https://github.com/knarayanareddy/GHOSTWRITER-CLI/blob/main/GHOSTWRITER-CLIdesigndoc.md"
+
+[tool.setuptools.packages.find]
+include = ["gw*"]
+
+[tool.pytest.ini_options]
+addopts = "--strict-markers --strict-config"
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["gw"]
+
+[tool.ruff]
+target-version = "py310"
+line-length = 240
+src = ["gw", "tests"]
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "B", "UP", "N", "S", "BLE"]
+ignore = [
+  "S101",  # pytest asserts are intentional
+  "S603",  # no subprocess shell use in runtime code
+  "S110",  # deliberate silent fallback/deletion paths
+  "N803",  # imported crypto class names retain canonical capitalization
+  "B023",  # publisher closures execute immediately inside loop
+  "S105",  # synthetic test fixture marker, not a credential
+]
+
+[tool.mypy]
+python_version = "3.10"
+strict = true
+packages = ["gw"]
+warn_unused_ignores = true
+ignore_missing_imports = true
+
+[tool.bandit]
+skips = ["B101"]

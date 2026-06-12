@@ -1,0 +1,40 @@
+# Python
+__pycache__/
+*.py[cod]
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+coverage.xml
+htmlcov/
+
+# Build artifacts
+build/
+dist/
+*.egg-info/
+
+# Virtual environments
+.venv/
+venv/
+env/
+
+# Local config / secrets
+.tmp-config/
+.env
+.env.*
+*.log
+credentials.enc
+
+# Tool caches
+.cache/
+.tox/
+.nox/
+
+# OS/editor
+.DS_Store
+.idea/
+.vscode/
+*.swp
+REQ.tmp

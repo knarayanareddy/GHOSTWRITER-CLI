@@ -1,0 +1,7 @@
+{
+  "version": "1.0.1",
+  "recorded_at": "2026-06-12T00:00:00Z",
+  "baseline_hardware": "not yet benchmarked in release lab",
+  "results": [],
+  "note": "Benchmark harness/results must be populated before a production minor release."
+}
